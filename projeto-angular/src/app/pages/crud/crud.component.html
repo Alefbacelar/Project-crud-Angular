@@ -7,24 +7,29 @@
 <!-- List -->
 <div class="container">
   <div class="buttonNew">
-    <button class="btn btn-success" (click)="toggle()">Novo Produto</button>
+    <button class="btn btn-success" (click)="toggle()" >Novo Produto</button>
   </div>
 
   <ng-container *ngIf="mostrar">
-    <div class="modalAdicionar">
-      <div class="container text-center">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Digite um nome para o produto</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Batata...">
+    <div>
+      <div class="modalAdicionar">
+        <div class="container text-center">
+            <form [formGroup]="novoProdutoForm">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Digite um nome para o produto</label>
+              <input formControlName="nome" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Batata...">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Descrição do produto</label>
+              <textarea formControlName="descricao" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div>
+              <button class="btn btn-primary" (click)="post()">Salvar Produto</button>
+            </div>
+          </form>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">Descrição do produto</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        <div>
-          <button class="btn btn-primary">Salvar Produto</button>
-        </div>
-      </div>
+
     </div>
     </ng-container>
 
@@ -42,12 +47,37 @@
         <td>{{items.nome}}</td>
         <td>{{items.descricao}}</td>
         <td>
-          <button class="btn btn-primary">Editar</button>
+          <button class="btn btn-primary" (click)="mostrarEdit()" (click)="editar(items)">Editar</button>
+
+          <ng-container *ngIf="mostrarEditar">
+            <div>
+              <div class="modalAdicionar">
+                <div class="container text-center">
+                    <form [formGroup]="novoProdutoForm">
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Digite um nome para o produto</label>
+                      <input formControlName="nome" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Batata...">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleFormControlTextarea1" class="form-label">Descrição do produto</label>
+                      <textarea formControlName="descricao" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <div>
+                      <button class="btn btn-primary" (click)="post()">Salvar Produto</button>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+
+            </div>
+          </ng-container>
+
           {{''}}
-          <button class="btn btn-danger">Deletar</button>
+          <button class="btn btn-danger" (click)="deletar()">Deletar</button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
 

@@ -17,7 +17,16 @@ export class CrudService {
   }
 
   post(produtos: any){
-    return this.http.post('http://localhost:3000/produtos/', produtos).pipe(take(1))
+    return this.http.post('http://localhost:3000/produtos/', produtos)
+  }
+
+  delete(id: any){
+    console.log('Cheguei no deletar')
+    return this.http.delete('http://localhost:3000/produtos/', id)
+  }
+
+  editar(id:any){
+    return this.http.put('http://localhost:3000/produtos/', id)
   }
 
 }
