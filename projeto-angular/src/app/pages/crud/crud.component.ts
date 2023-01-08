@@ -1,3 +1,4 @@
+import { CrudService } from './services/crud.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrudComponent implements OnInit {
 
-  constructor() { }
+  lista:any;
+  mostrar: boolean = false;
+
+  constructor(
+    private serviceCrud: CrudService
+  ) { }
 
   ngOnInit(): void {
+    this.getLista()
+  }
+
+  getLista(){
+    this.serviceCrud.get().subscribe((respostaAPI)=>{
+      this.lista = respostaAPI
+      console.log(respostaAPI)
+    })
+  }
+
+  toggle () {
+    this.mostrar = !this.mostrar;
   }
 
 }
