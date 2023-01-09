@@ -1,4 +1,3 @@
-import { Produtos } from './models/crud';
 import { CrudService } from './services/crud.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -47,20 +46,19 @@ export class CrudComponent implements OnInit {
       descricao : descricao,
       id : id
     };
-    /* if (id === 0) {
+     if (id === 0) {
 
-      this.criarPost(object);
+       this.criarPost(object);
+       this.limparCampos();
+       this.getLista();
 
 
-    } else {
-      this.update(object);
-      console.log('editando')
+      } else {
+        this.update(object,id);
+        this.limparCampos();
+        this.getLista();
 
-    } */
-     this.criarPost(object);
-    this.limparCampos();
-    this.getLista();
-
+    }
   }
 
   criarPost(object: object){
@@ -74,14 +72,14 @@ export class CrudComponent implements OnInit {
     this.novoProdutoForm = this.formBuilder.group({
       nome: [''],
       descricao: [''],
-      faqId: new FormControl(0),
+      id: new FormControl(0),
     })
   }
 
 //DELETE
 
-deletar(produtos: Produtos) {
-  this.serviceCrud.delete(produtos).subscribe(() => {
+deletar(id: any) {
+  this.serviceCrud.delete(id).subscribe(() => {
     this.getLista();
   });
 }
@@ -92,20 +90,23 @@ editar(item:any){
   console.log('chegou no editar')
   const {
     nome,
-    descricao
+    descricao,
+    id
   } = item;
   const object = {
     nome,
-    descricao
+    descricao,
+    id
   };
   this.novoProdutoForm.patchValue(object)
 }
 
-update(object: any){
+update(object: any, id:any){
   console.log('chegou no atualizar')
-  this.serviceCrud.editar(object).subscribe(()=>{
-    this.getLista();
-    this.initForm()
+  this.serviceCrud.editar(object,id).subscribe(()=>{
+    console.log('update')
+    //this.getLista();
+    //this.initForm()
   })
 }
 

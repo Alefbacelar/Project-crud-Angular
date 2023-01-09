@@ -11,7 +11,7 @@
       <div class="container text-center">
         <form [formGroup]="novoProdutoForm">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Digite um nome para o produto</label>
+            <label for="exampleFormControlInput1" class="form-label">Novo Produto / Editar Produto</label>
             <input formControlName="nome" type="email" class="form-control" id="exampleFormControlInput1"
               placeholder="Batata...">
           </div>
@@ -44,9 +44,10 @@
         <td>
           <button class="btn btn-primary" (click)="editar(items)">Editar</button>
           {{''}}
-          <button class="btn btn-danger" (click)="deletar(items)">Deletar</button>
+          <button class="btn btn-danger" (click)="deletar(items.id)">Deletar</button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+

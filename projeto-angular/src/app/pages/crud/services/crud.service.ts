@@ -1,7 +1,6 @@
-import { Produtos } from './../models/crud';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, retry, take } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,16 +20,12 @@ export class CrudService {
     return this.http.post('http://localhost:3000/produtos/', produtos)
   }
 
-  delete(produtos: Produtos) {
-    return this.http.delete<Produtos>('http://localhost:3000/produtos/'+ produtos.id)
+  delete(id: any) {
+    return this.http.delete<any>(`http://localhost:3000/produtos/${id}`)
   }
 
-  editar(produtos: Produtos){
-    return this.http.put<Produtos>('http://localhost:3000/produtos/'+ produtos.id, JSON.stringify(produtos))
+  editar(produtos: any, id: any): Observable<any>{
+    return this.http.put<any>(`http://localhost:3000/produtos/${id}`,produtos )
   }
-
-/*   editar(id: any): Observable<any>{
-    return this.http.put<any>('http://localhost:3000/produtos/', id)
-  } */
 
 }
