@@ -1,16 +1,5 @@
 {
-  "produtos": [
-    {
-      "nome": "X-Bacon",
-      "descricao": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, 2 fatia de bacon, salada e batata.",
-      "id": 3
-    },
-    {
-      "id": 4,
-      "nome": "X-Tudo",
-      "descricao": "Pão, 2 bifes de hambúrguer 90g, 2 fatias de queijo, 4 fatias de bacon, salada e batata."
-    }
-  ],
+  "produtos": [],
   "categorias": [
     {
       "id": 1,
