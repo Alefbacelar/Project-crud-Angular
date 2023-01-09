@@ -1,6 +1,7 @@
+import { Produtos } from './models/crud';
 import { CrudService } from './services/crud.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-crud',
@@ -10,8 +11,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class CrudComponent implements OnInit {
 
   lista:any;
-  mostrar: boolean = false;
-  mostrarEditar: boolean = false;
   novoProdutoForm: FormGroup | any;
   id:any;
 
@@ -34,13 +33,6 @@ export class CrudComponent implements OnInit {
     })
   }
 
-  toggle () {
-    this.mostrar = !this.mostrar;
-  }
-  mostrarEdit () {
-    this.mostrarEditar = !this.mostrarEditar;
-  }
-
 //ENVIAR
 
   async post(){
@@ -48,32 +40,50 @@ export class CrudComponent implements OnInit {
     const{
       nome,
       descricao,
+      id
     } = this.novoProdutoForm.value;
-    const objetoGroup = {
-      nome,
-      descricao,
+    const object = {
+      nome : nome,
+      descricao : descricao,
+      id : id
     };
-    this.criarPost(objetoGroup);
+    /* if (id === 0) {
+
+      this.criarPost(object);
+
+
+    } else {
+      this.update(object);
+      console.log('editando')
+
+    } */
+     this.criarPost(object);
+    this.limparCampos();
+    this.getLista();
+
   }
 
-  criarPost(objetoGroup: object){
+  criarPost(object: object){
     console.log('criando')
-    this.serviceCrud.post(objetoGroup).subscribe()
+    this.serviceCrud.post(object).subscribe(
+      )
+      console.log('Criado com sucesso')
   }
 
   initForm(){
     this.novoProdutoForm = this.formBuilder.group({
       nome: [''],
-      descricao: ['']
+      descricao: [''],
+      faqId: new FormControl(0),
     })
   }
 
 //DELETE
 
-async deletar(){
-  this.serviceCrud.delete(this.id).subscribe(()=>{
+deletar(produtos: Produtos) {
+  this.serviceCrud.delete(produtos).subscribe(() => {
     this.getLista();
-  })
+  });
 }
 
 //EDITAR
@@ -91,11 +101,17 @@ editar(item:any){
   this.novoProdutoForm.patchValue(object)
 }
 
-atualizar(object: any){
+update(object: any){
   console.log('chegou no atualizar')
   this.serviceCrud.editar(object).subscribe(()=>{
     this.getLista();
+    this.initForm()
   })
+}
+
+limparCampos(){
+  this.getLista();
+  this.initForm();
 }
 
 }

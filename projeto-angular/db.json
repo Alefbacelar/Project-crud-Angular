@@ -16,19 +16,9 @@
       "descricao": "Pão, 2 bifes de hambúrguer 90g, 2 fatias de queijo, 4 fatias de bacon, salada e batata."
     },
     {
-      "id": 5,
-      "nome": "Coca cola 350ml",
-      "descricao": ""
-    },
-    {
       "id": 6,
       "nome": "Coca cola 600ml",
       "descricao": ""
-    },
-    {
-      "nome": "",
-      "descricao": "",
-      "id": 7
     },
     {
       "nome": "Batata",
@@ -36,29 +26,9 @@
       "id": 8
     },
     {
-      "nome": "Teste",
-      "descricao": "",
+      "nome": "X-Búrguer",
+      "descricao": "TETSTE",
       "id": 9
-    },
-    {
-      "nome": "Potato",
-      "descricao": "Sal, Oregano.",
-      "id": 10
-    },
-    {
-      "nome": "Hot Dog",
-      "descricao": "Pão, Salsicha, Batata Palha, Pure, Maionese, Katchup, Mostarda",
-      "id": 11
-    },
-    {
-      "nome": "X-Búrguer 10",
-      "descricao": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, salada e batata.",
-      "id": 12
-    },
-    {
-      "nome": "X-Bacon 10",
-      "descricao": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, 2 fatia de bacon, salada e batata.",
-      "id": 13
     }
   ],
   "categorias": [
