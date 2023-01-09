@@ -1,7 +1,7 @@
 <!-- NAV -->
 <nav class="navbar navbar-expand-lg bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Bem vindo! Criando crud para estudos.</a>
+    <a class="navbar-brand" href="#">Bem vindo! CRUD para estudo.</a>
   </div>
 </nav>
 <!-- List -->
@@ -11,17 +11,17 @@
       <div class="container text-center">
         <form [formGroup]="novoProdutoForm">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Novo Produto / Editar Produto</label>
+            <label for="exampleFormControlInput1" class="form-label"><h4>Novo Produto / Editar Produto</h4></label>
             <input formControlName="nome" type="email" class="form-control" id="exampleFormControlInput1"
-              placeholder="Batata...">
+              placeholder="Digite o nome do produto...">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Descrição do produto</label>
+            <label for="exampleFormControlTextarea1" class="form-label"><h6>Descrição do produto</h6></label>
             <textarea formControlName="descricao" class="form-control" id="exampleFormControlTextarea1"
               rows="3"></textarea>
           </div>
           <div>
-            <button class="btn btn-primary" (click)="post()">Salvar Produto</button>
+            <button class="btn btn-success" (click)="enviar()">Salvar</button>
           </div>
         </form>
       </div>
@@ -32,7 +32,7 @@
     <thead>
       <h1>Lista de Produtos</h1>
       <tr>
-        <th scope="col">Produto</th>
+        <th scope="col">Produtos</th>
         <th scope="col">Descrição</th>
         <th scope="col">Ações</th>
       </tr>
@@ -42,7 +42,7 @@
         <td>{{items.nome}}</td>
         <td>{{items.descricao}}</td>
         <td>
-          <button class="btn btn-primary" (click)="editar(items)">Editar</button>
+          <button class="btn btn-warning" (click)="editar(items)">Editar</button>
           {{''}}
           <button class="btn btn-danger" (click)="deletar(items.id)">Deletar</button>
         </td>

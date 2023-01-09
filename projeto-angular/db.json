@@ -1,9 +1,9 @@
 {
   "produtos": [
     {
-      "id": 3,
       "nome": "X-Bacon",
-      "descricao": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, 2 fatia de bacon, salada e batata."
+      "descricao": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, 2 fatia de bacon, salada e batata.",
+      "id": 3
     },
     {
       "id": 4,
